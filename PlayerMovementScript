@@ -1,0 +1,27 @@
+using UnityEngine;
+using System.Collections;
+
+public class PlayerMovementScript : MonoBehaviour {
+
+    public float speed = 20;
+    Rigidbody2D playerRigidbody2d;
+
+
+
+    void PlayerMove()
+    {
+        Vector2 movement = Vector2.zero;
+        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed;
+        playerRigidbody2d.velocity = movement;
+    }
+
+	// Use this for initialization
+	void Start () {
+        playerRigidbody2d = this.GetComponent<Rigidbody2D>();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        PlayerMove();
+	}
+}
